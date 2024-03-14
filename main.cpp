@@ -1,13 +1,27 @@
+/*
+ * All the following code is a copy-paste from
+ * https://www.tritondatacenter.com/blog/zfs-raidz-striping
+ * (Post written by Mr. Max Bruning)
+ * This file is just a re-formatted, easier-to-read version.
+ */
+
 /* * Given an offset, size, number of disks in the raidz pool,
  * * the number of parity "disks" (1, 2, or 3 for raidz, raidz2, raidz3),
  * * and the sector size (shift),
  * * print a set of stripes. */
 
-#include
-#include
-#include
-#include
-#include
+#include <cstddef>
+#include <cstdint>
+#include <sys/param.h>
+#include <cstdlib>
+#include <cstdio>
+
+#define BROKEN_OFFSETOF_MACRO
+#ifdef BROKEN_OFFSETOF_MACRO
+    #undef offsetof
+    #define offsetof(type, member)   ((size_t)((char *)&(*(type *)0).member - \
+                                               (char *)&(*(type *)0)))
+#endif
 
 /* * The following are taken straight from usr/src/uts/common/fs/zfs/vdev_raidz.c
  * * If they change there, they need to be changed here.
@@ -67,7 +81,7 @@ raidz_map_t * vdev_raidz_map_get(uint64_t size, uint64_t offset, uint64_t unit_s
         acols = dcols;
         scols = dcols;
     }
-    rm = malloc(offsetof(raidz_map_t, rm_col[scols]));
+    rm = reinterpret_cast<raidz_map_t *>(malloc(offsetof(raidz_map_t, rm_col[scols])));
     if (rm == NULL) {
         fprintf(stderr, "malloc failed\n");
         exit(1);
