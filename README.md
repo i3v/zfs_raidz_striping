@@ -1,8 +1,11 @@
 Contents
 ========
 
-This is effectively a copy-paste from
-[a post written by Mr. Max Bruning]([https://www.tritondatacenter.com/blog/zfs-raidz-striping]), probably around 2013-03-26.
+The 
+[post_by_Max_Bruning.md](./post_by_Max_Bruning.md) 
+is a re-formatted copy of a
+[post written by Mr. Max Bruning](https://www.tritondatacenter.com/blog/zfs-raidz-striping),
+that was probably written around 2013-03-26.
 
 This is just a re-formatted, easier-to-read version of that great but awfully  formatted post.
 
