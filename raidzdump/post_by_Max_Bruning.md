@@ -51,7 +51,7 @@ So, there are two blocks, one at offset `0x14c00` and the other at offset `0x3cc
 I wrote a small program that uses the code from the `vdev_raidz_map_alloc()` routine to tell me the mapping that is set up. Here it is:
 
 ```
-<<< see main.cpp >>>
+<<< see main.cpp (old revisions)>>>
 ```
 
 The program takes an offset, size, number of disks in the pool, and optionally the number of parity (1 for raidz, 2 for raidz2 and 3 for raidz3) and the sector size (shift), and outputs the location of the blocks on the underlying disks. Let's try it.
