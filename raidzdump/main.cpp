@@ -160,8 +160,8 @@ int main(int argc, char *argv[]) {
     if (argc > 4) nparity = strtoull(argv[4], NULL, 16);
     if (argc == 6) unit_shift = strtoull(argv[5], NULL, 16);
     rzm = vdev_raidz_map_get(size, offset, unit_shift, dcols, nparity);
-    printf("cols = %d, firstdatacol = %d\n", rzm->rm_cols, rzm->rm_firstdatacol);
-    for (i = 0, cols = &rzm->rm_col[0]; i < rzm->rm_cols; i++, cols++)
-        printf("%d:%lx:%lx\n", cols->rc_devidx, cols->rc_offset, cols->rc_size);
+    printf("cols = %ld, firstdatacol = %ld\n", rzm->rm_cols, rzm->rm_firstdatacol);
+    for (i = 0, cols = &rzm->rm_col[0]; uint64_t(i) < rzm->rm_cols; i++, cols++)
+        printf("%ld:%lx:%lx\n", cols->rc_devidx, cols->rc_offset, cols->rc_size);
     exit(0);
 }
