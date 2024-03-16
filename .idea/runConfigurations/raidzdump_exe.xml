@@ -1,0 +1,8 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="raidzdump_exe" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="14c00 20000 5" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="zfs_raidz_striping" TARGET_NAME="raidzdump_exe" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="zfs_raidz_striping" RUN_TARGET_NAME="raidzdump_exe">
+    <method v="2">
+      <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      <option name="CMake.Install" enabled="true" />
+    </method>
+  </configuration>
+</component>
