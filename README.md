@@ -2,7 +2,7 @@ Contents
 ========
 
 The 
-[post_by_Max_Bruning.md](./post_by_Max_Bruning.md) 
+[post_by_Max_Bruning.md](raidzdump/post_by_Max_Bruning.md) 
 is a re-formatted copy of a
 [post written by Mr. Max Bruning](https://www.tritondatacenter.com/blog/zfs-raidz-striping),
 that was probably written around 2013-03-26.

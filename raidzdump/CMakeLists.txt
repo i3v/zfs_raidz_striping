@@ -3,4 +3,7 @@ project(zfs_raidz_striping)
 
 set(CMAKE_CXX_STANDARD 14)
 add_compile_options(-Wall -Wextra)
+
 add_executable(raidzdump main.cpp)
+
+install(TARGETS raidzdump DESTINATION bin)
