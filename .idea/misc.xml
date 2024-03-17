@@ -3,4 +3,5 @@
   <component name="CMakeWorkspace" PROJECT_DIR="$PROJECT_DIR$/raidzdump">
     <contentRoot DIR="$PROJECT_DIR$" />
   </component>
+  <component name="ProjectRootManager" version="2" project-jdk-name="Remote Python 3.10.13 (sftp://root@192.168.166.31:2222/root/.cache/pypoetry/virtualenvs/zfs-disk-monitor-jFkaF7ob-py3.10/bin/python)" project-jdk-type="Python SDK" />
 </project>
