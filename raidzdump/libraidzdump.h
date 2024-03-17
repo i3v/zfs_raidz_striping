@@ -1,6 +1,13 @@
 #ifndef ZFS_RAIDZ_STRIPING_LIBRAIDZDUMP_H
 #define ZFS_RAIDZ_STRIPING_LIBRAIDZDUMP_H
 
+/*
+ * All the following code is a copy-paste from
+ * https://www.tritondatacenter.com/blog/zfs-raidz-striping
+ * (Post written by Mr. Max Bruning)
+ * with minor adjustments.
+ */
+
 /* * The following are taken straight from usr/src/uts/common/fs/zfs/vdev_raidz.c
  * * If they change there, they need to be changed here.
  * * a map of columns returned for a given offset and size
@@ -37,6 +44,5 @@ typedef struct raidz_map {
 } raidz_map_t;
 
 raidz_map_t * vdev_raidz_map_get(uint64_t size, uint64_t offset, uint64_t unit_shift, uint64_t dcols, uint64_t nparity);
-
 
 #endif //ZFS_RAIDZ_STRIPING_LIBRAIDZDUMP_H

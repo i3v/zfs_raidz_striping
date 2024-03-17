@@ -2,7 +2,7 @@
  * All the following code is a copy-paste from
  * https://www.tritondatacenter.com/blog/zfs-raidz-striping
  * (Post written by Mr. Max Bruning)
- * This file is just a re-formatted, easier-to-read version.
+ * with minor adjustments.
  */
 
 /* * Given an offset, size, number of disks in the raidz pool,

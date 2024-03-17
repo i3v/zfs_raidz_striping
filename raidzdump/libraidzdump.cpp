@@ -12,6 +12,12 @@
                                                (char *)&(*(type *)0)))
 #endif
 
+/*
+ * All the following code is a copy-paste from
+ * https://www.tritondatacenter.com/blog/zfs-raidz-striping
+ * (Post written by Mr. Max Bruning)
+ * with minor adjustments.
+ */
 
 /* *  vdev_raidz_map_get() is hacked from vdev_raidz_map_alloc() in
  * *  usr/src/uts/common/fs/zfs/vdev_raidz.c.
