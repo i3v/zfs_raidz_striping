@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "zfs_ddrescue_map_generator"
+version = "0.1.0"
+description = ""
+package-mode = false
+authors = ["i3v"]
+readme = "README.md"
+packages = [{include = "zfs_disk_monitor"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+pandas = "^2.2.1"
+tabulate = "^0.9.0"
+pyarrow = "^15.0.0"
+tqdm = "^4.66.2"
+matplotlib = "^3.8.3"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
