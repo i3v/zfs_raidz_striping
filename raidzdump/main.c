@@ -10,10 +10,9 @@
  * * and the sector size (shift),
  * * print a set of stripes. */
 
-#include <cstddef>
-#include <cstdint>
-#include <cstdlib>
-#include <cstdio>
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
 #include "libraidzdump.h"
 
 int main(int argc, char *argv[]) {
@@ -30,19 +29,19 @@ int main(int argc, char *argv[]) {
         exit(1);
     }
     /* XXX - check return values */
-    uint64_t offset = strtoull(argv[1], nullptr, 16);
-    uint64_t size = strtoull(argv[2], nullptr, 16);
-    uint64_t dcols = strtoull(argv[3], nullptr, 16);
+    uint64_t offset = strtoull(argv[1], NULL, 16);
+    uint64_t size = strtoull(argv[2], NULL, 16);
+    uint64_t dcols = strtoull(argv[3], NULL, 16);
     if (size == 0 || dcols == 0) {
         /* should check size multiple of ashift...*/
         fprintf(stderr, "size and/or number of columns must be > 0\n");
         exit(1);
     }
-    if (argc > 4) nparity = strtoull(argv[4], nullptr, 16);
-    if (argc == 6) unit_shift = strtoull(argv[5], nullptr, 16);
+    if (argc > 4) nparity = strtoull(argv[4], NULL, 16);
+    if (argc == 6) unit_shift = strtoull(argv[5], NULL, 16);
     rzm = vdev_raidz_map_get(size, offset, unit_shift, dcols, nparity);
     printf("cols = %ld, firstdatacol = %ld\n", rzm->rm_cols, rzm->rm_firstdatacol);
-    for (i = 0, cols = &rzm->rm_col[0]; uint64_t(i) < rzm->rm_cols; i++, cols++)
+    for (i = 0, cols = &rzm->rm_col[0]; (uint64_t) i < rzm->rm_cols; i++, cols++)
         printf("%ld:%lx:%lx\n", cols->rc_devidx, cols->rc_offset, cols->rc_size);
     exit(0);
 }

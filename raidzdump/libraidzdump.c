@@ -1,8 +1,8 @@
-#include <cstddef>
-#include <cstdint>
+
 #include <sys/param.h>
-#include <cstdlib>
-#include <cstdio>
+#include <stdint.h>
+#include <malloc.h>
+#include <stdlib.h>
 #include "libraidzdump.h"
 
 #define BROKEN_OFFSETOF_MACRO
@@ -43,8 +43,8 @@ raidz_map_t* vdev_raidz_map_get(uint64_t size, uint64_t offset, uint64_t unit_sh
         acols = dcols;
         scols = dcols;
     }
-    rm = reinterpret_cast<raidz_map_t *>(malloc(offsetof(raidz_map_t, rm_col[scols])));
-    if (rm == nullptr) {
+    rm = malloc(offsetof(raidz_map_t, rm_col[scols]));
+    if (rm == NULL) {
         fprintf(stderr, "malloc failed\n");
         exit(1);
     }
@@ -55,7 +55,7 @@ raidz_map_t* vdev_raidz_map_get(uint64_t size, uint64_t offset, uint64_t unit_sh
     rm->rm_missingdata = 0;
     rm->rm_missingparity = 0;
     rm->rm_firstdatacol = nparity;
-    rm->rm_datacopy = nullptr;
+    rm->rm_datacopy = NULL;
     rm->rm_reports = 0;
     rm->rm_freed = 0;
     rm->rm_ecksuminjected = 0;
@@ -69,8 +69,8 @@ raidz_map_t* vdev_raidz_map_get(uint64_t size, uint64_t offset, uint64_t unit_sh
         }
         rm->rm_col[c].rc_devidx = col;
         rm->rm_col[c].rc_offset = coff;
-        rm->rm_col[c].rc_data = nullptr;
-        rm->rm_col[c].rc_gdata = nullptr;
+        rm->rm_col[c].rc_data = NULL;
+        rm->rm_col[c].rc_gdata = NULL;
         rm->rm_col[c].rc_error = 0;
         rm->rm_col[c].rc_tried = 0;
         rm->rm_col[c].rc_skipped = 0;

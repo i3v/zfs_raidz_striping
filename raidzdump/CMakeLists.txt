@@ -4,8 +4,8 @@ project(zfs_raidz_striping)
 set(CMAKE_CXX_STANDARD 14)
 add_compile_options(-Wall -Wextra)
 
-add_executable(raidzdump_exe main.cpp)
-add_library(raidzdump_lib SHARED libraidzdump.cpp)
+add_executable(raidzdump_exe main.c)
+add_library(raidzdump_lib SHARED libraidzdump.c)
 target_link_libraries(raidzdump_exe raidzdump_lib)
 
 install(TARGETS raidzdump_exe DESTINATION bin)
