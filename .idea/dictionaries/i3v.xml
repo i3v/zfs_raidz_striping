@@ -3,8 +3,20 @@
     <words>
       <w>acols</w>
       <w>asize</w>
+      <w>bigcols</w>
+      <w>dcols</w>
       <w>devidx</w>
+      <w>ecksuminjected</w>
+      <w>firstdatacol</w>
+      <w>libraidzdump</w>
+      <w>missingparity</w>
+      <w>nparity</w>
+      <w>nskip</w>
+      <w>raidz</w>
+      <w>raidzdump</w>
       <w>scols</w>
+      <w>skipstart</w>
+      <w>vdev</w>
     </words>
   </dictionary>
 </component>

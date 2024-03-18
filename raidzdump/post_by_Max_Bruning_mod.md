@@ -20,39 +20,7 @@ Let's go through an example. First, we'll set up a raidz pool and put some data 
 # zpool create rzpool raidz /var/tmp/f0 /var/tmp/f1 /var/tmp/f2 /var/tmp/f3 /var/tmp/f4
 # dd if=/usr/share/dict/words of=/rzpool/words bs=206674 count=1
 ```
-And now let's see the blocks assigned to the `/rzpool/words` file.
-
-```
-# zdb -dddddddd rzpool | grep -A20 -B5 -m 1 words
-...    
-    Object  lvl   iblk   dblk  dsize  dnsize  lsize   %full  type
-         2    2   128K   128K   259K     512   256K  100.00  ZFS plain file (K=inherit) (Z=inherit)
-                                               176   bonus  System attributes
-        dnode flags: USED_BYTES USERUSED_ACCOUNTED USEROBJUSED_ACCOUNTED
-        dnode maxblkid: 1
-        path    /words
-        uid     0
-        gid     0
-        atime   Fri Mar 15 15:18:54 2024
-        mtime   Fri Mar 15 15:18:54 2024
-        ctime   Fri Mar 15 15:18:54 2024
-        crtime  Fri Mar 15 15:18:54 2024
-        gen     27
-        mode    100644
-        size    206674
-        parent  34
-        links   1
-        pflags  40800000004
-        xattr   3
-Indirect blocks:
-               0 L1  0:a4400:800 0:6054000:800 20000L/400P F=2 B=27/27
-               0  L0 0:54400:28000 20000L/20000P F=1 B=27/27
-           20000  L0 0:7c400:28000 20000L/20000P F=1 B=27/27
-
-                segment [0000000000000000, 0000000000040000) size  256K
-
-```
-An [alternative](https://serverfault.com/a/1143030/154940) command that provides the same info:
+And now let's see the blocks assigned to the `/rzpool/words` file:
 ```
 # zdb  -bbbvvv rzpool -O words
 
@@ -103,7 +71,8 @@ cols = 5, firstdatacol = 1
 3:10e00:8000
 
 ```
-The parity for the block is on disk4 (`/var/tmp/f4`), the first 32k of data on disk0 (`/var/tmp/f0`), the second on disk1, etc. We could use `zdb(1M)` to check this:
+The parity for the block is on disk4 (`/var/tmp/f4`), the first 32k of data on disk0 (`/var/tmp/f0`), the second on disk1, etc. <br>
+We could use `zdb(1M)` to check this:
 ```
 # zdb -R rzpool 0.0:10e00:8000:r > read_v1.txt
 ```
@@ -178,7 +147,7 @@ cols = 6, firstdatacol = 2
 ```
 
 ```
-# dd if=/var/tmp/f5 bs=1 skip=$((0x11a00+4*1024*1024)) count=32k > read_v4.txt
+# dd if=/var/tmp/f5 bs=1 skip=$((0x11a00+4*1024*1024)) count=$((0x8000)) > read_v4.txt
 # diff read_v4.txt read_v0.txt
 ```
 
